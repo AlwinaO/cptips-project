@@ -4,25 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
     <title>Programming Tips</title>
 </head>
-<body>
-    <div class="container">
+    <body>
+        <div id="container">
 
-        <h1>Programming Tips</h1>
+            <h1>Programming Tips</h1>
 
-        <div id="new-tip-container">
-            <form id="new-tip-form">
-                <input type="text">
-                <input type="submit">
-            </form>
+            <div id="new-tip-container">
+                <form id="new-tip-form">
+                    <input type="text">
+                    <input type="submit">
+                </form>
+            </div>
+
+            <div id="tips-container">
+
+            </div>
+
         </div>
 
-        <div id="tips-container">
-
-        </div>
-
-    </div>
-</body>
+        <script src="src/components/tips.js"></script>
+        <script src="src/components/app.js"></script>
+        <script src="src/adapters/TipsAdapter.js"></script>
+        <script src="src/index.js"></script>
+    </body>
 </html>
