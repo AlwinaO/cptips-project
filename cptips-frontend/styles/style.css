@@ -1,3 +1,15 @@
+#container {
+    text-align: center;
+    font-family: 'Open Sans',sans-serif;
+}
+
+
+/* container for input form for new tips */
+#new-tip-container {
+    margin: auto;
+    height: 200px;    
+}
+
 /* main container for all cards */
 #tips-container {
     display: flex;
