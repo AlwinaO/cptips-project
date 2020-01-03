@@ -3,15 +3,20 @@ class Tips {
     constructor() {
         this.tips = [];
         this.adapter = new TipsAdapter();
-        // this.bindEventListeners();
+        this.bindEventListeners();
         this.fetchAndLoadTips();
+    }
+
+    bindEventListeners() {
+        this.tipsContainer = document.getElementById('tips-container')
     }
 
     // the instance of adapter will fetch the tips, which returns a promise and pass in a callback function
     fetchAndLoadTips() {
         this.adapter.getTips()
         .then(tips => {
-           tips.forEach(note => this.notes.push(note))
+        // console.log(tips)
+           tips.forEach(tip => this.tips.push(new Tip(tip)))
         })
         .then(() => {
             this.renderTips()
@@ -19,9 +24,22 @@ class Tips {
     }
 
     renderTips() {
-        const tipsContainer = document.getElementById("tips-container");
-        tipsContainer.innerHTML = "my tips here"
+        const tipsContainer = document.getElementById('tips-container');
+        const tipDiv = document.querySelector("div.tip");
+        tipDiv.innerHTML = this.tips.map(tip => tip.renderTip()).join("");
     }
+
+    // renderTips() {
+    //     const tipsContainer = document.getElementById('tips-container');
+    //     const tipsFlipCard = document.querySelector("div.flip-card");
+    //     const tipsFlipInner = document.querySelector("div.flip-card-inner");
+    //     const tipsFlipFront = document.querySelector("div.flip-card-front");
+    //     tipsFlipFront.innerHTML = this.tips.map(tip => tip.renderTipFront()).join("");
+    //     tipsFlipInner.appendChild(tipsFlipFront);
+    //     tipsFlipCard.appendChild(tipsFlipInner);
+    //     tipsContainer.appendChild(tipsFlipCard);
+
+    // }
 
 
 }
