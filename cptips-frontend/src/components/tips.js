@@ -25,8 +25,9 @@ class Tips {
 
     renderTips() {
         const tipsContainer = document.getElementById('tips-container');
-        const tipDiv = document.querySelector("div.tip");
-        tipDiv.innerHTML = this.tips.map(tip => tip.renderTip()).join("");
+        
+        tipsContainer.innerHTML = this.tips.map(tip => tip.renderTip()).join("");
+        
     }
 
     // renderTips() {
