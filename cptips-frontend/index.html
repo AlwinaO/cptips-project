@@ -15,8 +15,19 @@
 
             <div id="new-tip-container">
                 <form id="new-tip-form">
-                    <input type="text">
-                    <input type="submit">
+                    <label>Title:</label>
+                    <input type="text" id="title" name="title">
+
+                    <label>Content:</label>
+                    <textarea id="content" name="content" cols="30" rows="5"></textarea> 
+
+                    <label>Author:</label>
+                    <input type="text" id="author" name="author">
+
+                    <label>Link to Tip:</label>
+                    <input type="url" id="tip-url" name="tip-url">
+
+                    <input type="submit" value="Create Tip">
                 </form>
             </div>
 
