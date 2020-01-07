@@ -13,6 +13,7 @@ class Api::V1::TipsController < ApplicationController
     end
 
     def create
+        # binding.pry
         @tip = Tip.create(tip_params)
 
         render json: @tip, status: 200
