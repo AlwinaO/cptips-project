@@ -10,14 +10,22 @@ class Tips {
     bindEventListeners() {
         this.tipsContainer = document.getElementById('tips-container')
         this.tipForm = document.getElementById("new-tip-form")
-        this.tipForm.addEventListener('submit', this.createTip)
+        this.tipForm.addEventListener('submit', this.createTip.bind(this))
     }
 
     // method to create a new tip 
     // look at https://stackoverflow.com/questions/11563638/how-do-i-get-the-value-of-text-input-field-using-javascript?rq=1 for grabbing each input field
     createTip(e) {
         e.preventDefault()
-        console.log();
+        // const id = parseInt(e.target.dataset.id);
+        const title = e.target.querySelector('#title').value;
+        const content = e.target.querySelector('#content').value;
+        const author = e.target.querySelector('#author').value;
+        const url = e.target.querySelector('#tip-url').value;
+
+        this.adapter.createTip(title, content, author, url).then(tip => {
+            console.log(tip)
+        })
     }
 
     // the instance of adapter will fetch the tips, which returns a promise and pass in a callback function
