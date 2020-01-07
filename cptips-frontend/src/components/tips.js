@@ -11,6 +11,12 @@ class Tips {
         this.tipsContainer = document.getElementById('tips-container')
         this.tipForm = document.getElementById("new-tip-form")
         this.tipForm.addEventListener('submit', this.createTip.bind(this))
+        // this.tipsContainer.addEventListener('click', function () {
+                // console.log("clicked")
+        // this.tipEditButton = document.querySelector(".tip button")
+        // this.tipEditButton.addEventListener('click', function () {
+        //     console.log("clicked")
+        // })
     }
 
     // method to create a new tip 
