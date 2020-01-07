@@ -18,7 +18,7 @@ class Tip {
                 </div>`
     }
 
-
+}
     // renderTip() {
     //     const tipDiv = document.querySelector(".tip");
 
@@ -52,4 +52,3 @@ class Tip {
     //             <p>${this.author}</p>
     //             <p>${this.tipUrl}</p>`
     // }
-}
