@@ -14,7 +14,8 @@ class Tip {
                     <h1>${this.title}</h1>
                     <p>${this.content}</p>
                     <p>${this.author}</p>
-                    <a href="${this.tipUrl}" target="_blank">Link to Tip</a>
+                    <p><a href="${this.tipUrl}" target="_blank">Link to Tip</a></p>
+                    <button data-id=${this.id}>Edit Tip</button>
                 </div>`
     }
 
