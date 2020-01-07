@@ -24,7 +24,12 @@ class Tips {
         const url = e.target.querySelector('#tip-url').value;
 
         this.adapter.createTip(title, content, author, url).then(tip => {
-            console.log(tip)
+            this.tips.push(new Tip(tip))
+            title.reset() 
+            content.reset()
+            author.reset()
+            url.reset()
+            this.renderTips()
         })
     }
 
@@ -45,6 +50,7 @@ class Tips {
         this.tipsContainer.innerHTML = this.tips.map(tip => tip.renderTip()).join("");
         
     }
+}
 
     // renderTips() {
     //     const tipsContainer = document.getElementById('tips-container');
@@ -57,6 +63,3 @@ class Tips {
     //     tipsContainer.appendChild(tipsFlipCard);
 
     // }
-
-
-}
