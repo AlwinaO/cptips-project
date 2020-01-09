@@ -9,14 +9,9 @@ class Tips {
 
     bindEventListeners() {
         this.tipsContainer = document.getElementById('tips-container')
+        this.tipsContainer.addEventListener('click', this.handleTipClick.bind(this))
         this.tipForm = document.getElementById("new-tip-form")
         this.tipForm.addEventListener('submit', this.createTip.bind(this))
-        // this.tipsContainer.addEventListener('click', function () {
-                // console.log("clicked")
-        // this.tipEditButton = document.querySelector(".tip button")
-        // this.tipEditButton.addEventListener('click', function () {
-        //     console.log("clicked")
-        // })
     }
 
     // method to create a new tip 
@@ -39,6 +34,13 @@ class Tips {
         })
     }
 
+    handleTipClick(e){
+        const editButton = e.target.dataset.id;
+        // add code to toggle modal form
+        // https://sabe.io/tutorials/how-to-create-modal-popup-box
+        
+    }
+
     // the instance of adapter will fetch the tips, which returns a promise and pass in a callback function
     fetchAndLoadTips() {
         this.adapter.getTips()
@@ -53,9 +55,10 @@ class Tips {
 
     // function to render tips, markup is in tip.js 
     renderTips() {
-        this.tipsContainer.innerHTML = this.tips.map(tip => tip.renderTip()).join("");
-        
+        this.tipsContainer.innerHTML = this.tips.map(tip => tip.renderTip()).join(""); 
     }
+
+     
 }
 
     // renderTips() {
