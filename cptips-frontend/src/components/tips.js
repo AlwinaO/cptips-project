@@ -35,9 +35,10 @@ class Tips {
     }
 
     handleTipClick(e){
+        console.log(e)
+        e.preventDefault()
         const editButton = e.target.dataset.id;
-        // add code to toggle modal form
-        // https://sabe.io/tutorials/how-to-create-modal-popup-box
+        editButton.classlist.toggle('show-modal');
         
     }
 
