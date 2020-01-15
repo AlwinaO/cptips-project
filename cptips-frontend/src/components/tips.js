@@ -12,6 +12,8 @@ class Tips {
         this.tipsContainer.addEventListener('click', this.handleTipClick.bind(this))
         this.tipForm = document.getElementById("new-tip-form")
         this.tipForm.addEventListener('submit', this.createTip.bind(this))
+        this.body = document.querySelector('body')
+        this.body.addEventListener('blur', this.updateTip.bind(this), true)
     }
 
     // method to create a new tip 
@@ -26,21 +28,45 @@ class Tips {
 
         this.adapter.createTip(title, content, author, url).then(tip => {
             this.tips.push(new Tip(tip))
-            title.reset() 
-            content.reset()
-            author.reset()
-            url.reset()
+            this.tipForm.reset()
             this.renderTips()
         })
     }
 
     handleTipClick(e){
-        console.log(e)
-        e.preventDefault()
-        const editButton = e.target.dataset.id;
-        editButton.classlist.toggle('show-modal');
-        
+        // console.log(e.target)
+        // debugger
+        if (e.target.className == "button-modal") {
+            const editTip = e.target.parentNode;
+            editTip.contentEditable = true;
+            editTip.focus();
+            editTip.classList.add("editable");
+        }
     }
+
+    updateTip(e) {
+        console.log(e.target.parentNode)
+        if (e.target === 'body'){
+            console.log(this)
+            // const editTip = e.target;
+            // editTip.contentEditable = false;
+            // editTip.focus();
+            // editTip.classList.remove("editable");
+        }
+    }
+
+        // 1. get the id from the button 
+        // 2. use id to fetch the single tip
+        // 3. received the object from fetch, create new instance of the tip class - to have access to render 
+        // 4. look at line 28
+        // editTip = parseInt(e.target.dataset.id);
+        // console.log(editTip);
+        // this.adapter.getTip(editTip)
+        //     .then(tip => {
+        //         this.tips.push(new Tip(tip))})
+        // this.tips.forEach(tip => tip.classlist.add("show-modal"))
+        // this.editTip.classlist.add("show-modal");
+    
 
     // the instance of adapter will fetch the tips, which returns a promise and pass in a callback function
     fetchAndLoadTips() {
