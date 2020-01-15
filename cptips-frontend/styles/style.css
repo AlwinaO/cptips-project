@@ -10,7 +10,12 @@
     height: 200px;    
 }
 
-/* main container for all cards */
+div #edit-tip-container {
+    margin: auto;
+    justify-content: center;
+}
+
+/* main container for all tips */
 div #tips-container {
     display: flex;
     flex-flow: row wrap;
@@ -31,8 +36,13 @@ div #tips-container {
     background-color: rgb(207, 89, 188);
 }
 
+/* .editable {
+    padding: 20px;
+    border: 1px solid black;
+} */
+
 /* styles for modal edit form */
-.modal {
+ /* .modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -40,12 +50,12 @@ div #tips-container {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
+     visibility: hidden; 
+     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
 
-.modal-content {
+ .modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -75,7 +85,7 @@ div #tips-container {
     visibility: visible;
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-}
+} */
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
