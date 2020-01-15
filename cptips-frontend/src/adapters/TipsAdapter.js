@@ -27,4 +27,10 @@ class TipsAdapter {
             }
         }).then(res => res.json())
     }
+
+    getTip(tipId) {
+        const id = tipId;
+        return fetch(`${this.baseUrl}/${id}`)
+        .then(res => res.json())
+    }
 }
