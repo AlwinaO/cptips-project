@@ -12,8 +12,8 @@ class Tips {
         this.tipsContainer.addEventListener('click', this.handleTipClick.bind(this))
         this.tipForm = document.getElementById("new-tip-form")
         this.tipForm.addEventListener('submit', this.createTip.bind(this))
-        this.body = document.querySelector('body')
-        this.body.addEventListener('blur', this.updateTip.bind(this), true)
+        // this.body = document.querySelector('body')
+        // this.body.addEventListener('blur', this.updateTip.bind(this), true)
     }
 
     // method to create a new tip 
@@ -34,27 +34,29 @@ class Tips {
     }
 
     handleTipClick(e){
-        // console.log(e.target)
-        // debugger
-        if (e.target.className == "button-modal") {
-            const editTip = e.target.parentNode;
-            editTip.contentEditable = true;
-            editTip.focus();
-            editTip.classList.add("editable");
-        }
+        console.log(e)
+        const editTipId = e.target.dataset.id;
+        const tip = this.tips.find(tip => tip.id === editTipId);
+        document.querySelector('.tip').innerHTML = tip.renderEditTipForm();
+        
     }
 
-    updateTip(e) {
-        console.log(e.target.parentNode)
-        if (e.target === 'body'){
-            console.log(this)
-            // const editTip = e.target;
-            // editTip.contentEditable = false;
-            // editTip.focus();
-            // editTip.classList.remove("editable");
-        }
-    }
-
+    // updateTip(e) {
+    //     console.log(e.target.parentNode)
+    //     if (e.target === 'body'){
+    //         console.log(this)
+    //         // const editTip = e.target;
+    //         // editTip.contentEditable = false;
+    //         // editTip.focus();
+    //         // editTip.classList.remove("editable");
+    //     }
+    // }
+        // if (e.target.className == "button-modal") {
+        // const editTip = e.target.parentNode;
+        // editTip.contentEditable = true;
+        // editTip.focus();
+        // editTip.classList.add("editable");
+        // }
         // 1. get the id from the button 
         // 2. use id to fetch the single tip
         // 3. received the object from fetch, create new instance of the tip class - to have access to render 
