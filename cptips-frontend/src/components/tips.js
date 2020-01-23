@@ -34,41 +34,46 @@ class Tips {
     }
 
     handleTipClick(e){
-        console.log(e)
-        const editTipId = e.target.dataset.id;
-        const tip = this.tips.find(tip => tip.id === editTipId);
-        document.querySelector('.tip').innerHTML = tip.renderEditTipForm();
-        
+        if (e.target.className == "button-modal") {
+            
+            let tipId = parseInt(e.target.dataset.id)
+            this.fetchAndRenderEditForm(tipId)
+        }        
     }
 
-    // updateTip(e) {
-    //     console.log(e.target.parentNode)
-    //     if (e.target === 'body'){
-    //         console.log(this)
-    //         // const editTip = e.target;
-    //         // editTip.contentEditable = false;
-    //         // editTip.focus();
-    //         // editTip.classList.remove("editable");
-    //     }
-    // }
-        // if (e.target.className == "button-modal") {
-        // const editTip = e.target.parentNode;
-        // editTip.contentEditable = true;
-        // editTip.focus();
-        // editTip.classList.add("editable");
-        // }
-        // 1. get the id from the button 
-        // 2. use id to fetch the single tip
-        // 3. received the object from fetch, create new instance of the tip class - to have access to render 
-        // 4. look at line 28
-        // editTip = parseInt(e.target.dataset.id);
-        // console.log(editTip);
-        // this.adapter.getTip(editTip)
-        //     .then(tip => {
-        //         this.tips.push(new Tip(tip))})
-        // this.tips.forEach(tip => tip.classlist.add("show-modal"))
-        // this.editTip.classlist.add("show-modal");
-    
+    fetchAndRenderEditForm(tipId) {
+        
+        // added debuggers at various points to check on the tipId, tipFormModal and editFormDiv
+        fetch(`http://localhost:3000/api/v1/tips/${tipId}`)
+            .then(resp => resp.json())
+            .then(tip => {
+                let newTip = new Tip(tip)
+                
+                let tipFormModal = newTip.renderEditTipForm()
+                // debugger
+                // added edit form div with id of "edit-form" in renderTip() function (in Tip.js) under the edit button
+                // then queried for that div below
+                let editFormDiv = document.getElementById("edit-form")
+                
+                editFormDiv.innerHTML = tipFormModal // innerHTML updates but does not show tip modal form
+                // possible asynchronous issue and pull into separate function
+                let editForm = editFormDiv.querySelector('form')
+                editForm.addEventListener('submit', e => {
+                    // e.target should be the form node 
+                    this.editFormData(e.target, tip.id)
+                })
+            })
+    }
+
+    editFormData(form, tipId) {
+        console.log('in this function you collect the values of the form inputs', form, tipId);
+        // pass form data and id to updateTip()
+        this.updateTip(tipId, title, content, author, link)
+    }
+
+    updateTip(tipId, title, content, author, link) {
+      console.log("here is where you would do you patch fetch to edit tip using the tipId and form data", tipId);
+    }
 
     // the instance of adapter will fetch the tips, which returns a promise and pass in a callback function
     fetchAndLoadTips() {
@@ -101,3 +106,31 @@ class Tips {
     //     tipsContainer.appendChild(tipsFlipCard);
 
     // }
+
+    // updateTip(e) {
+    //     console.log(e.target.parentNode)
+    //     if (e.target === 'body'){
+    //         console.log(this)
+    //         // const editTip = e.target;
+    //         // editTip.contentEditable = false;
+    //         // editTip.focus();
+    //         // editTip.classList.remove("editable");
+    //     }
+    // }
+        // if (e.target.className == "button-modal") {
+        // const editTip = e.target.parentNode;
+        // editTip.contentEditable = true;
+        // editTip.focus();
+        // editTip.classList.add("editable");
+        // }
+        // 1. get the id from the button 
+        // 2. use id to fetch the single tip
+        // 3. received the object from fetch, create new instance of the tip class - to have access to render 
+        // 4. look at line 28
+        // editTip = parseInt(e.target.dataset.id);
+        // console.log(editTip);
+        // this.adapter.getTip(editTip)
+        //     .then(tip => {
+        //         this.tips.push(new Tip(tip))})
+        // this.tips.forEach(tip => tip.classlist.add("show-modal"))
+        // this.editTip.classlist.add("show-modal");
