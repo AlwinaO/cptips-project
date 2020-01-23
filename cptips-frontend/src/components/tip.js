@@ -16,6 +16,7 @@ class Tip {
                     <p>${this.author}</p>
                     <p><a href="${this.tipUrl}" target="_blank">Link to Tip</a></p>
                     <button class="button-modal" data-id=${this.id}>Edit Tip</button>
+                    <div id="edit-form"></div> 
                 </div>`
     }
 
