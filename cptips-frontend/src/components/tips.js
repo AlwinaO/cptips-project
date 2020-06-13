@@ -22,18 +22,18 @@ class Tips {
     // method to create a new tip 
     // look at https://stackoverflow.com/questions/11563638/how-do-i-get-the-value-of-text-input-field-using-javascript?rq=1 for grabbing each input field
     createTip(e) {
-        e.preventDefault()
+    e.preventDefault();
         // const id = parseInt(e.target.dataset.id);
-        const title = e.target.querySelector('#title').value;
-        const content = e.target.querySelector('#content').value;
-        const author = e.target.querySelector('#author').value;
-        const url = e.target.querySelector('#tip-url').value;
+    const title = e.target.querySelector("#title").value;
+    const content = e.target.querySelector("#content").value;
+    const author = e.target.querySelector("#author").value;
+    const url = e.target.querySelector("#tip-url").value;
 
-        this.adapter.createTip(title, content, author, url).then(tip => {
-            this.tips.push(new Tip(tip))
-            this.tipForm.reset()
-            this.renderTips()
-        })
+    this.adapter.createTip(title, content, author, url).then((tip) => {
+      this.tips.push(new Tip(tip));
+      this.tipForm.reset();
+      this.renderTips();
+    });
     }
 
     handleTipClick(e){
