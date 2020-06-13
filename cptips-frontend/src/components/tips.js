@@ -19,8 +19,6 @@ class Tips {
     // this.body.addEventListener('blur', this.updateTip.bind(this), true)
   }
 
-  // method to create a new tip
-  // look at https://stackoverflow.com/questions/11563638/how-do-i-get-the-value-of-text-input-field-using-javascript?rq=1 for grabbing each input field
   createTip(e) {
     e.preventDefault();
     // const id = parseInt(e.target.dataset.id);
@@ -44,34 +42,18 @@ class Tips {
   }
 
   fetchAndRenderEditForm(tipId) {
-    // added debuggers at various points to check on the tipId, tipFormModal and editFormDiv
     fetch(`http://localhost:3000/api/v1/tips/${tipId}`)
       .then((resp) => resp.json())
       .then((tip) => {
         let newTip = new Tip(tip);
 
         let tipFormModal = newTip.renderEditTipForm();
-        // console.log(newTip, "new tip");
-        // console.log(tipFormModal, "edit tip");
-
-        // debugger
-        // added edit form div with id of "edit-form" in renderTip() function (in Tip.js) under the edit button
-        // then queried for that div below
-        let editFormDiv = document.getElementById("edit-form");
-
-        console.log(editFormDiv, "edit form?");
-
-        editFormDiv.innerHTML = tipFormModal; // innerHTML updates but does not show tip modal form
-        // possible asynchronous issue and pull into separate function
-
-        console.log(editFormDiv.innerHTML, "maybe?");
+        let editFormDiv = document.querySelector(`.edit-form-${tip.id}`);
+        editFormDiv.innerHTML = tipFormModal;
         let editForm = editFormDiv.querySelector("div.modal form");
 
         editFormDiv.appendChild(editForm);
-
-        console.log(editForm, "IDK?");
         editForm.addEventListener("submit", (e) => {
-          // e.target should be the form node
           this.editFormData(e.target, tip.id);
         });
       });
@@ -114,43 +96,3 @@ class Tips {
       .join("");
   }
 }
-
-// renderTips() {
-//     const tipsContainer = document.getElementById('tips-container');
-//     const tipsFlipCard = document.querySelector("div.flip-card");
-//     const tipsFlipInner = document.querySelector("div.flip-card-inner");
-//     const tipsFlipFront = document.querySelector("div.flip-card-front");
-//     tipsFlipFront.innerHTML = this.tips.map(tip => tip.renderTipFront()).join("");
-//     tipsFlipInner.appendChild(tipsFlipFront);
-//     tipsFlipCard.appendChild(tipsFlipInner);
-//     tipsContainer.appendChild(tipsFlipCard);
-
-// }
-
-// updateTip(e) {
-//     console.log(e.target.parentNode)
-//     if (e.target === 'body'){
-//         console.log(this)
-//         // const editTip = e.target;
-//         // editTip.contentEditable = false;
-//         // editTip.focus();
-//         // editTip.classList.remove("editable");
-//     }
-// }
-// if (e.target.className == "button-modal") {
-// const editTip = e.target.parentNode;
-// editTip.contentEditable = true;
-// editTip.focus();
-// editTip.classList.add("editable");
-// }
-// 1. get the id from the button
-// 2. use id to fetch the single tip
-// 3. received the object from fetch, create new instance of the tip class - to have access to render
-// 4. look at line 28
-// editTip = parseInt(e.target.dataset.id);
-// console.log(editTip);
-// this.adapter.getTip(editTip)
-//     .then(tip => {
-//         this.tips.push(new Tip(tip))})
-// this.tips.forEach(tip => tip.classlist.add("show-modal"))
-// this.editTip.classlist.add("show-modal");
