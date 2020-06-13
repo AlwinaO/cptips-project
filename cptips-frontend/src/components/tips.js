@@ -45,27 +45,37 @@ class Tips {
     }
 
     fetchAndRenderEditForm(tipId) {
-        
         // added debuggers at various points to check on the tipId, tipFormModal and editFormDiv
         fetch(`http://localhost:3000/api/v1/tips/${tipId}`)
-            .then(resp => resp.json())
-            .then(tip => {
-                let newTip = new Tip(tip)
+      .then((resp) => resp.json())
+      .then((tip) => {
+        let newTip = new Tip(tip);
                 
-                let tipFormModal = newTip.renderEditTipForm()
+        let tipFormModal = newTip.renderEditTipForm();
+        // console.log(newTip, "new tip");
+        // console.log(tipFormModal, "edit tip");
+
                 // debugger
                 // added edit form div with id of "edit-form" in renderTip() function (in Tip.js) under the edit button
                 // then queried for that div below
-                let editFormDiv = document.getElementById("edit-form")
+        let editFormDiv = document.getElementById("edit-form");
                 
-                editFormDiv.innerHTML = tipFormModal // innerHTML updates but does not show tip modal form
+        console.log(editFormDiv, "edit form?");
+
+        editFormDiv.innerHTML = tipFormModal; // innerHTML updates but does not show tip modal form
                 // possible asynchronous issue and pull into separate function
-                let editForm = editFormDiv.querySelector('form')
-                editForm.addEventListener('submit', e => {
+
+        console.log(editFormDiv.innerHTML, "maybe?");
+        let editForm = editFormDiv.querySelector("div.modal form");
+
+        editFormDiv.appendChild(editForm);
+
+        console.log(editForm, "IDK?");
+        editForm.addEventListener("submit", (e) => {
                     // e.target should be the form node 
-                    this.editFormData(e.target, tip.id)
-                })
-            })
+          this.editFormData(e.target, tip.id);
+        });
+      });
     }
 
     editFormData(form, tipId) {
