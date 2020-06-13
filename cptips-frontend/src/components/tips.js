@@ -8,10 +8,13 @@ class Tips {
     }
 
     bindEventListeners() {
-        this.tipsContainer = document.getElementById('tips-container')
-        this.tipsContainer.addEventListener('click', this.handleTipClick.bind(this))
-        this.tipForm = document.getElementById("new-tip-form")
-        this.tipForm.addEventListener('submit', this.createTip.bind(this))
+    this.tipsContainer = document.getElementById("tips-container");
+    this.tipsContainer.addEventListener(
+      "click",
+      this.handleTipClick.bind(this)
+    );
+    this.tipForm = document.getElementById("new-tip-form");
+    this.tipForm.addEventListener("submit", this.createTip.bind(this));
         // this.body = document.querySelector('body')
         // this.body.addEventListener('blur', this.updateTip.bind(this), true)
     }
