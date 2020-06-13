@@ -16,7 +16,7 @@ class Tip {
                     <p>${this.author}</p>
                     <p><a href="${this.tipUrl}" target="_blank">Link to Tip</a></p>
                     <button class="button-modal" data-id=${this.id}>Edit Tip</button>
-                    <div id="edit-form"></div> 
+                    <div class="edit-form-${this.id}"></div> 
                 </div>`
     }
 
@@ -47,38 +47,3 @@ class Tip {
     }
 
 }
-
-
-// renderTip() {
-//     const tipDiv = document.querySelector(".tip");
-
-//     const tipTitleH1 = document.createElement('h1');
-//     tipTitleH1.innerHTML = this.title;
-//     tipDiv.appendChild(tipTitleH1);
-
-//     const tipContentP = document.createElement('p');
-//     tipContentP.innerHTML = this.content;
-//     tipTitleH1.appendChild(tipContentP);
-
-//     const tipAuthorP = document.createElement('p');
-//     tipAuthorP.innerHTML = this.author;
-//     tipTitleH1.appendChild(tipAuthorP);
-
-//     const tipUrlP = document.createElement('p');
-//     tipUrlP.innerHTML = this.tipUrl;
-//     tipTitleH1.appendChild(tipUrlP);
-
-//     return document.getElementById("tips-container") += tipDiv;
-
-
-// }
-
-// renderTipFront() {
-//     return `<h1>${this.title}</h1>`
-// }
-
-// renderTipBack() {
-//     return `<p>${this.content}</p>
-//             <p>${this.author}</p>
-//             <p>${this.tipUrl}</p>`
-// }
