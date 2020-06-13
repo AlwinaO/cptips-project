@@ -20,8 +20,8 @@ class Tip {
                 </div>`
     }
 
-   renderEditTipForm() {
-       return `
+    renderEditTipForm() {
+        return `
             <div class="modal">
                 <div class="modal-content">
                     <span class="close-button">close</span>
@@ -38,47 +38,47 @@ class Tip {
                         <label>Link to Tip:</label>
                         <input type="url" id="tip-url" name="tip-url" value="${this.tipUrl}">
 
-                        <input type="submit" value="Create Tip">
+                        <input type="submit" value="Edit Tip">
                     </form>
                 </div>
 
             </div>
        `;
-   }
+    }
 
 }
 
 
-    // renderTip() {
-    //     const tipDiv = document.querySelector(".tip");
+// renderTip() {
+//     const tipDiv = document.querySelector(".tip");
 
-    //     const tipTitleH1 = document.createElement('h1');
-    //     tipTitleH1.innerHTML = this.title;
-    //     tipDiv.appendChild(tipTitleH1);
+//     const tipTitleH1 = document.createElement('h1');
+//     tipTitleH1.innerHTML = this.title;
+//     tipDiv.appendChild(tipTitleH1);
 
-    //     const tipContentP = document.createElement('p');
-    //     tipContentP.innerHTML = this.content;
-    //     tipTitleH1.appendChild(tipContentP);
+//     const tipContentP = document.createElement('p');
+//     tipContentP.innerHTML = this.content;
+//     tipTitleH1.appendChild(tipContentP);
 
-    //     const tipAuthorP = document.createElement('p');
-    //     tipAuthorP.innerHTML = this.author;
-    //     tipTitleH1.appendChild(tipAuthorP);
+//     const tipAuthorP = document.createElement('p');
+//     tipAuthorP.innerHTML = this.author;
+//     tipTitleH1.appendChild(tipAuthorP);
 
-    //     const tipUrlP = document.createElement('p');
-    //     tipUrlP.innerHTML = this.tipUrl;
-    //     tipTitleH1.appendChild(tipUrlP);
+//     const tipUrlP = document.createElement('p');
+//     tipUrlP.innerHTML = this.tipUrl;
+//     tipTitleH1.appendChild(tipUrlP);
 
-    //     return document.getElementById("tips-container") += tipDiv;
-        
+//     return document.getElementById("tips-container") += tipDiv;
 
-    // }
 
-    // renderTipFront() {
-    //     return `<h1>${this.title}</h1>`
-    // }
+// }
 
-    // renderTipBack() {
-    //     return `<p>${this.content}</p>
-    //             <p>${this.author}</p>
-    //             <p>${this.tipUrl}</p>`
-    // }
+// renderTipFront() {
+//     return `<h1>${this.title}</h1>`
+// }
+
+// renderTipBack() {
+//     return `<p>${this.content}</p>
+//             <p>${this.author}</p>
+//             <p>${this.tipUrl}</p>`
+// }
